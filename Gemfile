@@ -30,7 +30,7 @@ group :test do
   gem 'autotest'
 end
 
-gem :development do
+group :development do
   gem 'annotate'
   gem 'guard'
   gem 'guard-livereload'
