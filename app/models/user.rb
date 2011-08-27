@@ -8,16 +8,21 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :surname, :date_of_birth, :school, :university
 
-  after_create :add_user_role
+  validate :name, :presence => true
+  validate :surname, :presence => true
+
+  before_create :init_user
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
 
-  def add_user_role
+  def init_user
     self.roles << Role.find_by_name("user")
+    self.name = "New"
+    self.surname = "User"
   end
 
 end

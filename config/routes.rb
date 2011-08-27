@@ -4,10 +4,10 @@ SocialHub::Application.routes.draw do
 
 
   root :to => "application#home"
-  
-  resources :people, :only => [ :show, :edit, :update ]
-  
-  
+
+  resources :users, :only => [ :show, :edit, :update ]
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
