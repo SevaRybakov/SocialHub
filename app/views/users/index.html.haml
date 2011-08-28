@@ -1,0 +1,16 @@
+%section
+  %table
+    %tr
+      %th Id
+      %th Name
+      %th Surname
+      %th Email
+      %th Actions
+    - @users.each do |user|
+      %tr
+        %td= user.id
+        %td= user.name
+        %td= user.surname
+        %td= user.email
+        %td= link_to 'destroy', user_path(user), :method => :delete, :confirm => "Sure?"
+
