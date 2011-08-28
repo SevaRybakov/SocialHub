@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   before_create :init_user
 
   def role?(role)
-    return !!self.roles.find_by_name(role.to_s.camelize)
+    return !!self.roles.find_by_name(role.to_s.downcase)
   end
 
   def init_user
