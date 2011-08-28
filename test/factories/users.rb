@@ -6,5 +6,6 @@ FactoryGirl.define do
     surname 'Doe'
     email 'john.doe@gmail.com'
     password 'password'
+    confirmed_at Time.now
   end  
 end
