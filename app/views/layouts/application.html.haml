@@ -1,4 +1,4 @@
-!!!
+<!DOCTYPE html>
 %html
   %head
     %title SocialHub
@@ -6,23 +6,8 @@
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
-    .topbar
-      .fill
-        .container
-          %h3 
-            %a{ :href => '/' } SocialHub
-          = render 'shared/topbar'
-    #wrapper
-      #sidebar.span4.columns
-        %p Sidebar goes here
-      #content.span12.columns
-        - if notice
-          .alert-message.notice
-            %a.close
-            = notice
-        -if alert
-          .alert-message.notice
-            %a.close
-            .alert= alert
-        = yield
+    %p.notice= notice
+    %p.alert= alert
+
+    = yield
 
