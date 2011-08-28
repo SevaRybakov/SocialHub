@@ -2,12 +2,27 @@
   %h1= @user.name + ' ' + @user.surname
   %h2 Edit Profile
 
-  = semantic_form_for @user do |form|
-    = form.inputs do
-      = form.input :name
-      = form.input :surname
-      = form.input :date_of_birth, :as => :date, :start_year => Time.now.year - 70, :end_year => Time.now.year - 5
-      = form.input :school
-      = form.input :university
-    = form.buttons
+  - form_for @user do |form|
+    %div.clearfix
+      = form.label :name
+      %div.input
+        = form.text_field :name
+    %div.clearfix
+      = form.label :surname
+      %div.input
+        = form.text_field :surname
+    %div.clearfix
+      = form.label :date_of_birth
+      %div.input
+        = form.date_select :date_of_birth, :start_year => Time.now.year - 70, :end_year => Time.now.year - 5
+    %div.clearfix
+      = form.label :school
+      %div.input
+        = form.text_field :school
+    %div.clearfix
+      = form.label :university
+      %div.input
+        = form.text_field :university
+    %div.actions
+      = form.submit :class => "btn primary"
 
