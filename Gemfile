@@ -13,7 +13,6 @@ gem 'cancan'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'sass'
-gem 'formtastic'
 
 group :test do
   gem 'database_cleaner'

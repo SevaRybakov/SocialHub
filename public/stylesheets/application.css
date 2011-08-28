@@ -188,17 +188,17 @@ table {
   display: block;
   margin: 0 auto; }
 
-.container, #wrapper {
+.container {
   width: 940px;
   margin: 0 auto;
   zoom: 1;
   margin-bottom: 18px; }
 
-.container:before, #wrapper:before, .container:after, #wrapper:after {
+.container:before, .container:after {
   display: table;
   content: ""; }
 
-.container:after, #wrapper:after {
+.container:after {
   clear: both; }
 
 .btn.danger,
@@ -396,7 +396,7 @@ body {
   color: #808080;
   text-rendering: optimizeLegibility; }
 
-.container, #wrapper {
+.container {
   width: 940px;
   margin: 0 auto; }
 
