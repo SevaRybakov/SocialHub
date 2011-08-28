@@ -12,7 +12,7 @@
     .topbar
       .fill
         .container
-          %h3 
+          %h3
             %a{ :href => '/' } SocialHub
           = render 'shared/topbar'
     #wrapper
@@ -29,6 +29,6 @@
             .alert= alert
         = yield
 
-    = debug(params) if Rails.env.development?
-    = debug("current_user.id: #{current_user.id}") if Rails.env.development? && current_user
+        = debug(params) if Rails.env.development?
+        = debug("current_user.id: #{current_user.id}") if Rails.env.development? && current_user
 

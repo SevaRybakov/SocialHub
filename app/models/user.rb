@@ -20,8 +20,6 @@ class User < ActiveRecord::Base
 
   def init_user
     self.roles << Role.find_by_name("user")
-    self.name = "New"
-    self.surname = "User"
   end
 
 end
