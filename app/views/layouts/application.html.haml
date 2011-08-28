@@ -14,3 +14,6 @@
 
     = yield
 
+    = debug(params) if Rails.env.development?
+    = debug("current_user.id: #{current_user.id}") if Rails.env.development? && current_user
+
