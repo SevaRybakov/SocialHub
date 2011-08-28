@@ -1,0 +1,18 @@
+%ul
+  - if user_signed_in?
+    %li
+      %a Friends( +4 )
+    %li
+      %a Photos( +10 )
+  - else
+    %li
+      %a Sign up
+    %li
+      %a Log in
+
+%form
+  %input{ :type => 'text', :placeholder => 'Search...'}
+
+%ul.nav.secondary-nav
+  %li
+    %a Log out
