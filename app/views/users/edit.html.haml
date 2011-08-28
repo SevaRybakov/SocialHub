@@ -1,0 +1,13 @@
+%section
+  %h1= @user.name + ' ' + @user.surname
+  %h2 Edit Profile
+
+  = semantic_form_for @user do |form|
+    = form.inputs do
+      = form.input :name
+      = form.input :surname
+      = form.input :date_of_birth, :as => :date, :start_year => Time.now.year - 70, :end_year => Time.now.year - 5
+      = form.input :school
+      = form.input :university
+    = form.buttons
+
