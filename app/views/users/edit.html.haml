@@ -3,26 +3,26 @@
   %h2 Edit Profile
 
   - form_for @user do |form|
-    %div.clearfix
+    .clearfix
       = form.label :name
-      %div.input
+      .input
         = form.text_field :name
-    %div.clearfix
+    .clearfix
       = form.label :surname
-      %div.input
+      .input
         = form.text_field :surname
-    %div.clearfix
+    .clearfix
       = form.label :date_of_birth
-      %div.input
-        = form.date_select :date_of_birth, :start_year => Time.now.year - 70, :end_year => Time.now.year - 5
-    %div.clearfix
+      .input
+        = form.date_select :date_of_birth, { :start_year => Time.now.year - 70, :end_year => Time.now.year - 5, :include_blank => true }, { :id => "mediumSelect", :class => "medium"}
+    .clearfix
       = form.label :school
-      %div.input
+      .input
         = form.text_field :school
-    %div.clearfix
+    .clearfix
       = form.label :university
-      %div.input
+      .input
         = form.text_field :university
-    %div.actions
+    .actions
       = form.submit :class => "btn primary"
 

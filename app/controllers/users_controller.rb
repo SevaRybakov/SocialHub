@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def destroy
     authorize! :manage, User
     @user.destroy
-    flash[:notice] = "User successfully destroyed."
+    flash[:success] = "User successfully destroyed."
     redirect_to users_path
   end
 
@@ -24,10 +24,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      flash[:notice] = "User successfully updated."
+      flash[:success] = "User successfully updated."
       redirect_to user_path @user
     else
-      flash[:alert] = "Error with updating user."
+      flash[:error] = "Error with updating user."
       redirect_to edit_user_path @user
     end
   end
