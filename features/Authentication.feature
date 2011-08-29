@@ -6,7 +6,6 @@ Feature: Authentication
     When I fill in "user[email]" with "john.doe@gmail.com"
     And I fill in "Password" with "password"
     And I press "Sign in"
-    Then show me the page
     Then I should see "John Doe"
     And I should see "(It's you)"
 
