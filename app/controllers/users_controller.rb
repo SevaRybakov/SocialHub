@@ -3,12 +3,10 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    authorize! :manage, User
     @users = User.all
   end
 
   def destroy
-    authorize! :manage, User
     @user.destroy
     flash[:success] = "User successfully destroyed."
     redirect_to users_path

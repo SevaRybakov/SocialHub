@@ -1,5 +1,5 @@
 %section
-  %table
+  %table.zebra-striped
     %tr
       %th Id
       %th Name
@@ -12,5 +12,7 @@
         %td= user.name
         %td= user.surname
         %td= user.email
-        %td= link_to 'destroy', user_path(user), :method => :delete, :confirm => "Sure?"
+        %td
+          - if can? :manage, user
+            = link_to 'destroy', user_path(user), :method => :delete, :confirm => "Sure?"
 
