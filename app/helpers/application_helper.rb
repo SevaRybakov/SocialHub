@@ -6,4 +6,8 @@ module ApplicationHelper
   def subtitle(page_subtitle)
     content_for(:subtitle) { page_subtitle }
   end
+  
+  def sidebar(page_sidebar)
+    content_for(:sidebar) { page_sidebar }
+  end
 end

@@ -16,10 +16,11 @@
     #wrapper.container
       %section
         .row
-          #sidebar.span4.columns
-            = "Sidebar goes there"
-          - # Flash keys supported: warning, error, success, info
-          #content.span12.columns
+          - unless yield(:sidebar).blank?
+            #sidebar.span4.columns
+              = yield(:sidebar)
+          
+          #content{ :class => ( yield(:sidebar).blank? ? "span16" : "span12" ) + " columns" }
             - # Adding a title to the page
             - unless yield(:title).blank?
               .page-header
@@ -27,7 +28,8 @@
                   = yield :title
                   - unless yield(:subtitle).blank?
                     %small= yield :subtitle
-                    
+            
+            - # Flash keys supported: warning, error, success, info
             - flash.each do |key, value|
               .alert-message{:class => key}
                 %a.close ×
