@@ -12,7 +12,7 @@
           %h3
             %a{ :href => '/' } SocialHub
           = render 'shared/topbar'
-    
+
     #wrapper.container
       %section
         .row
@@ -23,19 +23,20 @@
             - # Adding a title to the page
             - unless yield(:title).blank?
               .page-header
-                %h1 
+                %h1
                   = yield :title
                   - unless yield(:subtitle).blank?
                     %small= yield :subtitle
-                    
+
             - flash.each do |key, value|
               .alert-message{:class => key}
                 %a.close ×
                 %p
                   = value
             = yield
-        
-      
-    
+
+
+
     = debug(params) if Rails.env.development?
-    = debug("current_user.id: #{current_user.id}") if Rails.env.development? && current_user
+    = debug("current_user.id: #{current_user.id} .roles: #{current_user.roles}") if Rails.env.development? && current_user
+
