@@ -30,6 +30,8 @@ RSpec.configure do |config|
   config.before(:each) do
       DatabaseCleaner.strategy = :truncation
       DatabaseCleaner.clean
+      seed_file = File.join(Rails.root, "db", "seeds.rb")
+      load(seed_file)
     end
 
 end

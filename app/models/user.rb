@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
   # Friendship associations
   
   # 1) actual friends;
-  has_many :friendships
-  has_many :friends, :through => :friendships, 
-                     :conditions => { :is_confirmed => true }
+  has_many :friendships, 
+           :conditions => { :is_confirmed => true }
+  has_many :friends, :through => :friendships
+                     
   
   # 2) wanted friends 
   # (the people our user has sent friendship request to);
@@ -47,9 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def friend?(user)
-    !!Friendship.where( :is_confirmed => true,
-                      :user_id => user.id,
-                      :friend_id => self.id )
+    self.friends.include? user
   end
 end
 
