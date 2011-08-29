@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   has_many :potential_friends, :through => :friendship_requests,
                              :source => :user
 
+ 
+                             
+  validates_presence_of :name, :surname
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
@@ -35,7 +39,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :surname, :date_of_birth, :school, :university
 
-  validates_presence_of :name, :surname
+  
 
   before_create :init_user
 
