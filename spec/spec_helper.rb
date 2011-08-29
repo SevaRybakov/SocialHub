@@ -31,8 +31,4 @@ RSpec.configure do |config|
       DatabaseCleaner.strategy = :truncation
       DatabaseCleaner.clean
 
-      seed_file = File.join(Rails.root, "db", "seeds.rb")
-      load(seed_file)
-    end
-
 end
