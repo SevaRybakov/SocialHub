@@ -20,7 +20,7 @@
             #sidebar.span4.columns
               = yield(:sidebar)
           
-          #content{ :class => ( yield(:sidebar).blank? ? "span16" : "span12" ) + " columns" }
+          #content{ :class => content_class( yield(:sidebar).blank? ) }
             - # Adding a title to the page
             - unless yield(:title).blank?
               .page-header
