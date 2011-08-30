@@ -1,5 +1,5 @@
 Feature: Authentication
-
+    
   Scenario: Logging In
     Given a user "John Doe"
     And I am on the login page
