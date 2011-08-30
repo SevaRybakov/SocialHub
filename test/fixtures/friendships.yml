@@ -1,0 +1,24 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  friend_id: 1
+  is_confirmed: false
+
+two:
+  user_id: 1
+  friend_id: 1
+  is_confirmed: false
+
+# == Schema Information
+#
+# Table name: friendships
+#
+#  id           :integer         not null, primary key
+#  user_id      :integer
+#  friend_id    :integer
+#  is_confirmed :boolean         default(FALSE)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
