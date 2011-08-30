@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   end
 
   def find_and_check_user
-    @user = User.find_by_id params[:user_id]
+
+    @user = User.find params[:id]
     redirect_to "/404.html" if @user.nil?
   end
 
