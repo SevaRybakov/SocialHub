@@ -3,6 +3,8 @@
   %p= post.content
   %div
     = link_to "Show", user_post_path( post.user_to, post)
-    = link_to "Edit", edit_user_post_path( post.user_to, post )
-    = link_to "Destroy", user_post_path( post.user_to, post ), :method => :delete, :confirm => "Sure?"
+    - if can? :update, post
+      = link_to "Edit", edit_user_post_path( post.user_to, post )
+    - if can? :destroy, post
+      = link_to "Destroy", user_post_path( post.user_to, post ), :method => :delete, :confirm => "Sure?"
 

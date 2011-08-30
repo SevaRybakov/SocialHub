@@ -10,6 +10,12 @@ class Ability
       can :manage, User do |u|
         u == user
       end
+      can :destroy, Post do |p|
+        p.user_to == user || p.user_from == user
+      end
+      can :update, Post do |p|
+        p.user_from == user
+      end
     end
     # Define abilities for the passed in user here. For example:
     #

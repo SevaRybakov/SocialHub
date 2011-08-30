@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id params[:id]
     redirect_to "/404.html" if @user.nil?
+    @posts = Post.where("user_to_id = ?", @user.id).order("created_at DESC")
   end
 
   def edit

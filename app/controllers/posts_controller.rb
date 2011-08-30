@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  load_and_authorize_resource :except => [ :index, :show, :new, :create ]
+
   def index
     find_and_check_user
     @posts = Post.where("user_to_id = ?", @user.id).order("created_at DESC")
@@ -28,8 +30,10 @@ class PostsController < ApplicationController
     @post.post_type = "post"
     respond_to do |format|
       if @post.save
-        flash[:success] = "Post successfully created."
-        format.html { redirect_to user_posts_path @user }
+        format.html do
+          flash[:success] = "Post successfully created."
+          redirect_to user_posts_path @user
+      end
         format.js
       else
         flash[:error] = "Error with creating new post."
@@ -50,6 +54,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find_by_id(params[:id])
+    if @post.destroy
+      flash[:success] = "Post successfully destroyed."
+      redirect_to user_posts_path @user
+    else
+      flash[:error] = "Error with destroying post."
+      redirect_to user_posts_path @user
+    end
+  end
 
 end
 

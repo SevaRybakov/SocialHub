@@ -18,5 +18,11 @@
       %dt University:
       %dd= @user.university
 
-%section
+- form_for( [@user, Post.new], :remote => true ) do |form|
+  .clearfix
+    = form.text_area :content, :class => "xxlarge", :rows => 2
+    = form.submit :class => "btn primary"
+
+%div#posts
+  = render :partial => "/posts/post", :collection => @posts
 
