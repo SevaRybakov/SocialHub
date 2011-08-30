@@ -27,10 +27,10 @@ class User < ActiveRecord::Base
   has_many :potential_friends, :through => :friendship_requests,
                              :source => :user
 
- 
-                             
+             
   validates_presence_of :name, :surname
   
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,

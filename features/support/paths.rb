@@ -14,17 +14,10 @@ module NavigationHelpers
     when /^the login page$/
       new_user_session_path
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     when /^(.*)'s profile page$/i
       user_path(User.find_by_name($1))
-=======
-      
->>>>>>> Fixed User Controller bag that didn't allow user to browse other user pages. Started work on cucumber for Add Friend Subfeature
-=======
-    when /^(.*)'s profile page$/i
-      user_path(User.find_by_name($1))
->>>>>>> Sending Friendship Scenario refactored
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

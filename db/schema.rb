@@ -10,21 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20110829124425) do
-
-  create_table "posts", :force => true do |t|
-    t.integer  "user_to_id"
-    t.integer  "user_from_id"
-    t.string   "content"
-    t.string   "post_type"
-    t.string   "media_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-=======
 ActiveRecord::Schema.define(:version => 20110829132005) do
->>>>>>> Started working on Friendship model. RSpec now works with database_cleaner
 
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
@@ -36,10 +22,16 @@ ActiveRecord::Schema.define(:version => 20110829132005) do
 
   add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
   add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
-<<<<<<< HEAD
 
-=======
->>>>>>> Started working on Friendship model. RSpec now works with database_cleaner
+  create_table "posts", :force => true do |t|
+    t.integer  "user_to_id"
+    t.integer  "user_from_id"
+    t.string   "content"
+    t.string   "post_type"
+    t.string   "media_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
