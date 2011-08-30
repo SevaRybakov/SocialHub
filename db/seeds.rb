@@ -5,40 +5,37 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-#def delete_all
-  puts "Deleting all..."
-  User.delete_all
-  Role.delete_all
-#end
+puts "Deleting all..."
+User.delete_all
+Role.delete_all
 
-#def create_roles
-  puts "Create roles..."
-  Role.create(:name => "user")
-  Role.create(:name => "admin")
-#end
+puts "Create roles..."
+Role.create!(:name => "user")
+Role.create!(:name => "admin")
 
-#def create_users
-  puts "Create test users..."
-  5.times do |i|
-    user = User.new( :email => "u#{i}@sh.com", :password => "qwerty", :password_confirmation => "qwerty", :name => "Test", :surname => "User #{i}")
-    user.roles << Role.find_by_name("user")
-    user.save
+puts "Create test users..."
+25.times do |i|
+  user = User.new( :email => "u#{i}@sh.com", :password => "qwerty", :password_confirmation => "qwerty", :name => "Test", :surname => "User #{i}")
+  user.roles << Role.find_by_name("user")
+  user.save!
+end
+
+puts "Email confirmation..."
+User.all.each do |u|
+  u.confirmation_token = nil
+  u.confirmed_at = Time.now
+  u.save!
+end
+
+puts "Adding admin role for u1@sh.com"
+user = User.first
+user.roles << Role.find_by_name("admin")
+user.save!
+
+puts "Posts between users..."
+User.all.each do |user_to|
+  User.all.each do |user_from|
+    post = Post.create!( :user_to => user_to, :user_from => user_from, :content => "Hello to #{user_to.name} #{user_to.surname} from #{user_from.name} #{user_from.surname}!", :post_type => "post")
   end
-#end
-
-#def email_confirmation
-  puts "Email confirmation..."
-  User.all.each do |u|
-    u.confirmation_token = nil
-    u.confirmed_at = Time.now
-    u.save
-  end
-#end
-
-#def add_admin_role
-  puts "Adding admin role for u1@sh.com"
-  user = User.first
-  user.roles << Role.find_by_name("admin")
-  user.save
-#end
+end
 

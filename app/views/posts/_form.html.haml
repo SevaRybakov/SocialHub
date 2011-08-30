@@ -1,0 +1,9 @@
+
+= form_for [@user, @post] do |form|
+  .clearfix
+    = form.label :content
+    .input
+      = form.text_area :content, :rows => 3, :class => "xxlarge"
+  .actions
+    = form.submit :class => "btn primary"
+

@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.references :user_to
       t.references :user_from
       t.string :content
-      t.string :type
+      t.string :post_type
       t.string :media_url
 
       t.timestamps
@@ -15,3 +15,4 @@ class CreatePosts < ActiveRecord::Migration
     drop_table :posts
   end
 end
+

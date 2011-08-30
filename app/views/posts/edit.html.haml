@@ -1,0 +1,13 @@
+- title @user.name + " " + @user.surname
+- if (current_user == @user)
+  - subtitle "(It's you)"
+
+- sidebar "Sidebar will be there"
+
+%h2
+  Edit Post From
+  = link_to @post.user_from.name + " " + @post.user_from.surname, user_path( @post.user_from )
+%br/
+
+= render :partial => "form"
+

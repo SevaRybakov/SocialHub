@@ -10,8 +10,6 @@ class Ability
       can :manage, User do |u|
         u == user
       end
-    else
-      can :read, User
     end
     # Define abilities for the passed in user here. For example:
     #

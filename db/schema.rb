@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20110829124425) do
     t.integer  "user_to_id"
     t.integer  "user_from_id"
     t.string   "content"
-    t.string   "type"
+    t.string   "post_type"
     t.string   "media_url"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -14,7 +14,8 @@
     .clearfix
       = form.label :date_of_birth
       .input
-        = form.date_select :date_of_birth, { :start_year => Time.now.year - 70, :end_year => Time.now.year - 5, :include_blank => true }, { :id => "mediumSelect", :class => "medium"}
+        = form.date_select :date_of_birth, { :start_year => Time.now.year - 70, :end_year => Time.now.year - 5, :include_blank => true },
+                            { :id => "mediumSelect", :class => "medium"}
     .clearfix
       = form.label :school
       .input

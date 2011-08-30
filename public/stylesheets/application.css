@@ -775,7 +775,7 @@ select,
   padding: 4px;
   font-size: 13px;
   line-height: 18px;
-  height: 18px;
+/*  height: 18px; */
   color: #808080;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
@@ -1980,3 +1980,4 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 
 #wrapper {
   margin-top: 60px; }
+
