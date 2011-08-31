@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
     self.friends.include? user
   end
   
-  def can_request_friendship_from?(another_user)
+  def can_send_friendship_request_to?(another_user)
     self != another_user &&
     !self.friends.include?(another_user) &&
     !self.wanted_friends.include?(another_user) &&
