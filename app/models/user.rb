@@ -53,6 +53,7 @@ class User < ActiveRecord::Base
 
   def init_user
     self.roles << Role.find_by_name("user")
+    self.last_activity_at = Time.now
   end
 
 
@@ -65,6 +66,10 @@ class User < ActiveRecord::Base
     self.friends.include? user
   end
 
+  def online?
+    Time.now - self.last_activity_at < 3.minutes
+  end
+
   def can_send_friendship_request_to?(another_user)
     self != another_user &&
     !self.friends.include?(another_user) &&
@@ -73,6 +78,7 @@ class User < ActiveRecord::Base
   end
 
 end
+
 
 
 # == Schema Information
@@ -100,5 +106,6 @@ end
 #  university             :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  last_activity_at       :datetime
 #
 

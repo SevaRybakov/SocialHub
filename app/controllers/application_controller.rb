@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  after_filter :update_user_activity
+
   def home
     if user_signed_in?
       redirect_to user_path current_user
@@ -13,10 +15,19 @@ class ApplicationController < ActionController::Base
     @user = User.find_by_id params[:user_id]
     redirect_to "/404.html" if @user.nil?
   end
-
+  
+  def update_user_activity
+    if current_user
+      current_user.last_activity_at = Time.now
+      current_user.save
+    end
+  end
+  
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
+  
+  
 
 end
 

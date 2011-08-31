@@ -1,6 +1,10 @@
 - title @user.name + " " + @user.surname
 - if (current_user == @user)
   - subtitle "(It's you)"
+- else 
+  - if (@user.online?)
+    - subtitle "Online"
+
 
 - sidebar render('sidebar')
 
