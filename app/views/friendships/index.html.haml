@@ -1,0 +1,27 @@
+
+
+%ul.tabs
+  %li
+    %a{ :href => '#friends' } Friends
+  %li
+    %a{ :href => '#requests'} Requests
+
+#friends.tab-content
+  - if @established.length != 0
+    - @established.each do |fr|
+      %p= fr.user.full_name
+  - else
+    %p You have no friends
+
+
+#requests.tab-content
+  - if @requests.length != 0
+    - @requests.each do |req|
+      .actions
+        %img{ :src => '/images/kitty-small.png'}
+        = link_to req.user.full_name, user_path(req.user)
+        
+  - else
+    %p You have no friendship requests
+
+  
