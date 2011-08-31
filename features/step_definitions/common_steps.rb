@@ -20,12 +20,3 @@ Given /^I am logged in as "(\w+) (\w+)"$/ do |name, surname|
   click_button('user_submit')
 end
 
-When /^I browse profile page of "([^"]*)"$/ do |user|
-  name, surname = user.split
-  u = User.where(:name => name, :surname => surname).first ||
-      Factory.create( :user, 
-                     :name => name, 
-                     :surname => surname, 
-                     :email => name + '.' + surname + '@gmail.com' )
-  visit user_path 3
-end

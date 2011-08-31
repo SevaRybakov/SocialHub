@@ -51,8 +51,15 @@ class User < ActiveRecord::Base
     self.roles << Role.find_by_name("user")
   end
 
-  def friend?(user)
+  def friend_of?(user)
     self.friends.include? user
+  end
+  
+  def can_request_friendship_from?(another_user)
+    self != another_user &&
+    !self.friends.include?(another_user) &&
+    !self.wanted_friends.include?(another_user) &&
+    !self.potential_friends.include?(another_user)
   end
 end
 
