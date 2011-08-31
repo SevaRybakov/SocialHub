@@ -5,7 +5,7 @@ Given /^a user "(\w+) (\w+)"$/ do |name, surname|
                  :email => name + '.' + surname + '@gmail.com'
 end
 
-Given /^I am logged in as "(\w+) (\w+)"$/ do |name, surname|
+When /^I am logged in as "(\w+) (\w+)"$/ do |name, surname|
   u = User.where(:name => name, :surname => surname).first ||
 
       Factory.create( :user, 
@@ -20,3 +20,8 @@ Given /^I am logged in as "(\w+) (\w+)"$/ do |name, surname|
   click_button('user_submit')
 end
 
+
+
+When /^I am in (.*) browser$/ do |name|
+  Capybara.session_name = name
+end
