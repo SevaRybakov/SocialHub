@@ -1,11 +1,12 @@
-class FriendshipController < ApplicationController
+class FriendshipsController < ApplicationController
 
-  before_filter :get_user, :only => [:send_request]
+  before_filter :get_user, :only => [:index]
+  before_filter :get_friend, :only => [:send_request]
 
   def index
-    @established = @friend.friendships
-    @requests = @friend.friendship_requests
-    @wanted = @friend.wanted_friendships
+    @established = @user.friendships
+    @requests = @user.friendship_requests
+    @wanted = @user.wanted_friendships
   end
 
   def send_request
@@ -20,8 +21,12 @@ class FriendshipController < ApplicationController
     redirect_to user_path @friend
   end
   
-  def get_user
+  def get_friend
     @friend ||= User.find params[:friend_id]
+  end
+  
+  def get_user
+    @user ||= User.find params[:user_id]
   end
   
 end

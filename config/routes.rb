@@ -11,7 +11,7 @@ SocialHub::Application.routes.draw do
   end
   
   match 'friendships/request/:friend_id' => 'friendships#send_request', :as => 'friendship_request'
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
 
   before_create :init_user
 
+  def full_name
+    "#{self.name} #{self.surname}"
+  end
+
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.downcase)
   end
