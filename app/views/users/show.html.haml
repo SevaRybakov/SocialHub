@@ -25,6 +25,7 @@
 %div#posts
   = render :partial => "/posts/post", :collection => @posts
 
-%div{ :align => "center" }
-  = link_to "...More...", user_posts_path(@user, :created_at => @posts.last.created_at), :remote => true, :id => "more_posts_link"
+- if @posts.size >= 10
+  %div{ :align => "center" }
+    = link_to "...More...", user_posts_path(@user, :created_at => @posts.last.created_at), :remote => true, :id => "more_posts_link"
 

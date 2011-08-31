@@ -27,7 +27,7 @@ User.all.each do |u|
   u.save!
 end
 
-puts "Adding admin role for u1@sh.com"
+puts "Adding admin role for u0@sh.com"
 user = User.first
 user.roles << Role.find_by_name("admin")
 user.save!
