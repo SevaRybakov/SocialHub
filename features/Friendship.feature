@@ -5,8 +5,7 @@ Feature: Friendship
     Given a user "John Doe"
     And I am logged in as "Vasya Pupkin"
     When I go to John's profile page
-<<<<<<< HEAD
-    Then I should see "John Doe"
-=======
-    Then I should see "John Doe"
->>>>>>> ae7b5b4270c5e63d97df4fbd61448cdaccc1f971
+    And I press "Add friend"
+    Then I should be on John's pofile page
+    And I should see "John will be notified about your friendship request"
+
