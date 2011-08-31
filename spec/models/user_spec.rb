@@ -27,7 +27,7 @@ describe User do
       
       request.confirm
       
-      (john.friend? mark).should be_true
-      (mark.friend? john).should be_true      
+      (john.friend_of? mark).should be_true
+      (mark.friend_of? john).should be_true      
     end
 end
