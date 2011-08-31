@@ -14,7 +14,6 @@ Feature: Friendship
     And should not see "Add friend"
     
     When I am in Luke's browser
-    And I am logged in as "Luke Skywalker"
     Then I should see "+1"
     
   
