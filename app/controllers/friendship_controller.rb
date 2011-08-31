@@ -1,4 +1,5 @@
 class FriendshipController < ApplicationController
+
   def send_request
     friend = User.find params[:id]
     if current_user.can_request_friendship_from? friend &&

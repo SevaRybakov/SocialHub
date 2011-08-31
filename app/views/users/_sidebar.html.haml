@@ -1,4 +1,8 @@
 %img{ :src => '/images/kitty.jpg' }
+<<<<<<< Updated upstream
 
 - if current_user != @user && !current_user.wanted_friends.include?(@user) 
   = link_to "Add friend", friendship_request_path(:id => @user.id), :class => 'btn primary'
+=======
+= link_to "Add friend", friendship_request_path( @user.id),:class => 'btn primary'
+>>>>>>> Stashed changes
