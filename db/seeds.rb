@@ -35,7 +35,7 @@ user.save!
 puts "Posts between users..."
 User.all.each do |user_to|
   User.all.each do |user_from|
-    post = Post.create!( :user_to => user_to, :user_from => user_from, :content => "Hello to #{user_to.name} #{user_to.surname} from #{user_from.name} #{user_from.surname}!", :post_type => "post")
+    post = Post.create!( :user_to => user_to, :user_from => user_from, :content => "Hello to #{user_to.name} #{user_to.surname} from #{user_from.name} #{user_from.surname}!", :post_type => "post", :created_at => Time.now - rand(10000) )
   end
 end
 

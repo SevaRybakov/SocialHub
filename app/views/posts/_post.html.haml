@@ -1,10 +1,12 @@
-%div.twipsies.well
-  %h2= link_to post.user_from.name + " " + post.user_from.surname, user_path( post.user_from )
-  %p= post.content
-  %div
+%div
+  %h3
+    = link_to post.user_from.name + " " + post.user_from.surname, user_path( post.user_from )
+    %small= post.content
+  %div{:align => "right"}
     = link_to "Show", user_post_path( post.user_to, post)
     - if can? :update, post
       = link_to "Edit", edit_user_post_path( post.user_to, post )
     - if can? :destroy, post
       = link_to "Destroy", user_post_path( post.user_to, post ), :method => :delete, :confirm => "Sure?"
+  %hr/
 

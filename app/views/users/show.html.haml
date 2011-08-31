@@ -18,11 +18,13 @@
       %dt University:
       %dd= @user.university
 
-- form_for( [@user, Post.new], :remote => true ) do |form|
-  .clearfix
-    = form.text_area :content, :class => "xxlarge", :rows => 2
-    = form.submit :class => "btn primary"
+%hr/
+
+= render :partial => "/posts/remote_form"
 
 %div#posts
   = render :partial => "/posts/post", :collection => @posts
+
+%div{ :align => "center" }
+  = link_to "...More...", user_posts_path(@user, :created_at => @posts.last.created_at), :remote => true, :id => "more_posts_link"
 

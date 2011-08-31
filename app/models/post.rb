@@ -4,6 +4,6 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :user_to, :user_from, :content, :post_type
 
-  attr_accessible :user_to, :user_from, :content, :post_type
+  attr_accessible :user_to, :user_from, :content, :post_type, :created_at
 end
 

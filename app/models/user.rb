@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles
-  has_many :posts
+  has_many :posts, :foreign_key => "user_to_id"
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
@@ -21,6 +21,11 @@ class User < ActiveRecord::Base
 
   def init_user
     self.roles << Role.find_by_name("user")
+  end
+
+  def get_posts created_at = nil
+    created_at ||= Time.now
+    self.posts.where("created_at < ?", created_at).order("created_at DESC").limit(10).all
   end
 
 end

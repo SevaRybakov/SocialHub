@@ -1,0 +1,8 @@
+- form_for( [@user, Post.new], :remote => true ) do |form|
+  .clearfix
+    %label Add your post here:
+    .input
+      = form.text_area :content, :class => "xxlarge", :rows => 2
+  .actions
+    = form.submit :class => "btn primary"
+

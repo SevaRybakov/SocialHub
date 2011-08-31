@@ -1,0 +1,6 @@
+$('#posts').append("<%= escape_javascript(render :partial => 'post', :collection => @posts) %>");
+$('#more_posts_link').attr("href", "<%=escape_javascript(user_posts_path(@user, :created_at => @posts.last.created_at))%>")
+<%- if @posts.size < 10 %>
+  $('#more_posts_link').hide()
+<%- end %>
+

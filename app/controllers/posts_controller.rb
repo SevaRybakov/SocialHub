@@ -4,7 +4,11 @@ class PostsController < ApplicationController
 
   def index
     find_and_check_user
-    @posts = Post.where("user_to_id = ?", @user.id).order("created_at DESC")
+    @posts = @user.get_posts(params[:created_at])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
@@ -32,7 +36,7 @@ class PostsController < ApplicationController
       if @post.save
         format.html do
           flash[:success] = "Post successfully created."
-          redirect_to user_posts_path @user
+          redirect_to user_path @user
       end
         format.js
       else
@@ -47,7 +51,7 @@ class PostsController < ApplicationController
     @post = Post.find_by_id(params[:id])
     if @post.update_attributes(params[:post])
       flash[:success] = "Post successfully updated."
-      redirect_to user_posts_path @user
+      redirect_to user_path @user
     else
       flash[:error] = "Error with updating post."
       redirect_to edit_user_post_path @user, @post
@@ -58,10 +62,10 @@ class PostsController < ApplicationController
     @post = Post.find_by_id(params[:id])
     if @post.destroy
       flash[:success] = "Post successfully destroyed."
-      redirect_to user_posts_path @user
+      redirect_to user_path @user
     else
       flash[:error] = "Error with destroying post."
-      redirect_to user_posts_path @user
+      redirect_to user_path @user
     end
   end
 
