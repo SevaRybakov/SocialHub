@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
   load_and_authorize_resource :except => [:show]
-  before_filter :find_and_check_user, :only => [:show]
-  
+
   def index
     @users = User.all
   end
