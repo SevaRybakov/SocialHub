@@ -32,6 +32,7 @@ describe User do
     end
 end
 
+
 # == Schema Information
 #
 # Table name: users
@@ -57,5 +58,6 @@ end
 #  university             :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  last_activity_at       :datetime
 #
 
