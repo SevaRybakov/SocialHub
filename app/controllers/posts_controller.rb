@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     find_and_check_user
-    @posts = @user.get_posts(params[:created_at])
+    @posts = @user.get_older_posts(params[:created_at])
     respond_to do |format|
       format.html
       format.js

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id params[:id]
     redirect_to "/404.html" if @user.nil?
-    @posts = @user.get_posts
+    @posts = @user.get_older_posts
   end
 
   def edit
