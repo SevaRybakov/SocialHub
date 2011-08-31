@@ -7,10 +7,10 @@ SocialHub::Application.routes.draw do
 
   resources :users do
     resources :posts
+    match 'friends' => 'friendships#index'
   end
   
-  match 'friendship/request/:friend_id' => 'friendship#send_request', :as => 'friendship_request'
-
+  match 'friendships/request/:friend_id' => 'friendships#send_request', :as => 'friendship_request'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,7 +1,10 @@
 %ul
   - if user_signed_in?
     %li
-      %a Friends( +4 )
+      %a 
+        = "Friends"
+        - unless current_user.friendship_requests.empty?
+          = "( +#{current_user.friendship_requests.length.to_s} )"
     %li
       %a Photos( +10 )
   - else
