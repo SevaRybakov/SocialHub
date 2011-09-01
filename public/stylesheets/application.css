@@ -775,7 +775,7 @@ select,
   padding: 4px;
   font-size: 13px;
   line-height: 18px;
-/*  height: 18px; */
+  height: 18px;
   color: #808080;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
@@ -1981,6 +1981,12 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 #wrapper {
   margin-top: 60px; }
 
-.user {
-  font-size: 16px; }
-
+a.user {
+  font-size: 16px;
+  font-weight: bold;
+  color: #444444;
+  text-decoration: none;
+  border-bottom: 0; }
+  a.user:hover {
+    color: #444444;
+    text-decoration: underline; }

@@ -13,12 +13,16 @@
 #all-friends.tab-content
   - if @established.length != 0
     - @established.each do |fr|
-      %p= fr.user.full_name
+      = link_to fr.friend.full_name, user_path(fr.friend), :class => 'user'
   - else
     %p You have no friends
 
 #online-friends.tab-content
-  %p Online friends will be later
+  - if @online.length != 0
+    - @established.each do |fr|
+      = link_to fr.friend.full_name, user_path(fr.friend), :class => 'user'
+  - else
+    %p You have no friends online
 
 #requests.tab-content
   - if @requests.length != 0

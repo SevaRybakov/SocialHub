@@ -6,4 +6,7 @@
 - if @user.friends.length != 0
   .page-header
     %h3 Friends
+  .friend-block
+    - @user.friends.each do |f|
+      - f.name
      

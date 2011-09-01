@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
 
   def index
     @established = @user.friendships
-    @online = @user.friendships
+    @online = @user.friendships.select{|fr| fr.friend.online? }
     @requests = @user.friendship_requests
     @wanted = @user.wanted_friendships
   end
