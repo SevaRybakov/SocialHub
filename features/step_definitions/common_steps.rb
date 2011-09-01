@@ -6,7 +6,7 @@ Given /^a user "(\w+) (\w+)"$/ do |name, surname|
 end
 
 When /^I am logged in as "(\w+) (\w+)"$/ do |name, surname|
-  u = User.where(:name => name, :surname => surname).first || 
+  u = User.where(:name => name, :surname => surname).first ||
   Factory.create(:user,
                  :name => name,
                  :surname => surname,
@@ -22,3 +22,8 @@ end
 When /^I am in (.*) browser$/ do |name|
   Capybara.session_name = name
 end
+
+And /^I am waiting (\d+) seconds{,1}$/ do |seconds|
+  sleep seconds.to_i
+end
+

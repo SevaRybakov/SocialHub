@@ -65,6 +65,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    find_and_check_user
     @post = Post.find_by_id(params[:id])
     if @post.destroy
       flash[:success] = "Post successfully destroyed."

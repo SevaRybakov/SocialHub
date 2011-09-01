@@ -22,13 +22,13 @@ $(function(){
 
 $(function() {
   if($('#posts').length > 0 ) {
-    setTimeout(updatePosts, 10000)
+    setTimeout(updatePosts, 1000)
   }
 })
 
 function updatePosts() {
   var created_at = $(".post:first-child").attr("posttime");
   $.getScript(window.location.href + "/posts" + "?created_at=" + created_at + "&status=new")
-  setTimeout(updatePosts, 10000)
+  setTimeout(updatePosts, 1000)
 }
 
