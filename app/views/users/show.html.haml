@@ -1,7 +1,7 @@
 - title @user.name + " " + @user.surname
 - if (current_user == @user)
   - subtitle "(It's you)"
-- else 
+- else
   - if (@user.online?)
     - subtitle "Online"
 
@@ -31,5 +31,5 @@
 
 - if @posts.size >= 10
   %div{ :align => "center" }
-    = link_to "...More...", user_posts_path(@user, :created_at => @posts.last.created_at), :remote => true, :id => "more_posts_link"
+    = link_to "...More...", user_posts_path(@user, :created_at => @posts.last.created_at, :status => "older"), :remote => true, :id => "more_posts_link"
 

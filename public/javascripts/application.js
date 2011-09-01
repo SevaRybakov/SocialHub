@@ -3,19 +3,32 @@ $(function(){
 	$(".close").click( function(){
 		$(this).parent().fadeOut(1000);
 	});
-	
+
 	//Tab control.
 	$('.tab-content').hide();
 	$('ul.tabs li:first').addClass('active');
 	$('.tab-content:first').show();
-	
+
 	$('ul.tabs li a').click( function(){
 		$('ul.tabs li').removeClass('active');
 		$(this).parent().addClass('active');
 		$('.tab-content').hide();
-		
+
 		var tabToShow = $(this).attr('href');
 		$(tabToShow).fadeIn(200);
 		return false;
 	});
 });
+
+$(function() {
+  if($('#posts').length > 0 ) {
+    setTimeout(updatePosts, 10000)
+  }
+})
+
+function updatePosts() {
+  var created_at = $(".post:first-child").attr("posttime");
+  $.getScript(window.location.href + "/posts" + "?created_at=" + created_at + "&status=new")
+  setTimeout(updatePosts, 10000)
+}
+

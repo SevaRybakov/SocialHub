@@ -1,4 +1,4 @@
-%div
+%div.post{:posttime => post.created_at.to_i }
   %h3
     = link_to post.user_from.name + " " + post.user_from.surname, user_path( post.user_from )
     %small= post.content

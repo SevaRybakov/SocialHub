@@ -62,6 +62,11 @@ class User < ActiveRecord::Base
     self.posts.where("created_at < ?", created_at).order("created_at DESC").limit(10).all
   end
 
+  def get_new_posts created_at = nil
+    created_at ||= Time.now
+    self.posts.where("created_at > ?", created_at).order("created_at DESC").all
+  end
+
   def friend_of?(user)
     self.friends.include? user
   end
