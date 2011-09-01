@@ -19,6 +19,14 @@ module ApplicationHelper
       "span12 columns"
     end
   end
+  
+  def friends_link_text
+    txt = 'Friends'
+    unless current_user.friendship_requests.empty?
+      txt += "( +#{current_user.friendship_requests.length.to_s} )"
+    end
+    txt
+  end
 
 end
 
