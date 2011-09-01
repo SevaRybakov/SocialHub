@@ -3,6 +3,7 @@
     = link_to post.user_from.name + " " + post.user_from.surname, user_path( post.user_from )
     %small= post.content
   %div{:align => "right"}
+    %small= get_date_in_text(post.created_at).to_s + " - "
     = link_to "Show", user_post_path( post.user_to, post)
     - if can? :update, post
       = link_to "Edit", edit_user_post_path( post.user_to, post )
