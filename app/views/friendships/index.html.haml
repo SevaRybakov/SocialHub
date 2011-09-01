@@ -1,18 +1,24 @@
-
+- title "Friends"
+- sidebar render('users/sidebar')
 
 %ul.tabs
   %li
-    %a{ :href => '#friends' } Friends
+    %a{ :href => '#all-friends' } All friends
+  %li
+    %a{ :href => '#online-friends' } Online friends
   %li
     %a{ :href => '#requests'} Requests
+  
 
-#friends.tab-content
+#all-friends.tab-content
   - if @established.length != 0
     - @established.each do |fr|
       %p= fr.user.full_name
   - else
     %p You have no friends
 
+#online-friends.tab-content
+  %p Online friends will be later
 
 #requests.tab-content
   - if @requests.length != 0
