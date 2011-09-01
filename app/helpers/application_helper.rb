@@ -19,13 +19,21 @@ module ApplicationHelper
       "span12 columns"
     end
   end
-  
+
   def friends_link_text
     txt = 'Friends'
     unless current_user.friendship_requests.empty?
       txt += "( +#{current_user.friendship_requests.length.to_s} )"
     end
     txt
+  end
+
+  def get_date_in_text time
+    return "less than minute" if Time.now - time < 1.minutes
+    return "#{((Time.now - time)/60).to_i} minutes ago" if Time.now - time < 1.hours
+    return "#{((Time.now - time)/60/60).to_i} hours ago" if Time.now - time < 1.days
+    return "#{((Time.now - time)/60/60/24).to_i} days ago" if Time.now - time < 1.month
+    time
   end
 
 end

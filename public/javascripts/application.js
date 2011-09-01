@@ -18,17 +18,26 @@ $(function(){
 		$(tabToShow).fadeIn(200);
 		return false;
 	});
-});
 
-$(function() {
-  if($('#posts').length > 0 ) {
-    setTimeout(updatePosts, 1000)
+  $(function() {
+    if($('#posts').length > 0 ) {
+      setTimeout(updatePosts, 5000)
+    }
+  })
+
+  function updatePosts() {
+    var created_at = $(".post:first-child").attr("posttime");
+    $.getScript(window.location.href + "/posts" + "?created_at=" + created_at + "&status=new")
+    setTimeout(updatePosts, 5000)
   }
-})
 
-function updatePosts() {
-  var created_at = $(".post:first-child").attr("posttime");
-  $.getScript(window.location.href + "/posts" + "?created_at=" + created_at + "&status=new")
-  setTimeout(updatePosts, 1000)
-}
+  function() {
+    $('#post_submit').attr('disabled','disabled');
+    $('#post_content').change(function() {
+      if($(this).val != '') {
+        $('#post_submit').removeAttr('disabled');
+      }
+  });
+
+});
 
