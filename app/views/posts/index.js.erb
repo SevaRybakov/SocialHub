@@ -11,6 +11,8 @@
 <%- else %>
 
   $('#posts').prepend("<%= escape_javascript(render :partial => 'post', :collection => @posts) %>");
-
+  <%- if @posts.size > 0 %>
+    $(".post:first-child").css("background-color", "#F5F5F5");
+  <%- end %>
 <%- end %>
 
