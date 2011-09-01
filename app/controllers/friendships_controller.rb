@@ -33,6 +33,16 @@ class FriendshipsController < ApplicationController
     redirect_to user_path current_user
   end
   
+  def cancel
+    @friendship ||= Friendship.find params[:friendship_id]
+    if @friendship.destroy
+      flash[:success] = "You are no longer friends"
+    else
+      flash[:error] = "Error"
+    end
+    redirect_to user_path current_user
+  end
+  
   private ####################################################
   
   def get_friend

@@ -25,7 +25,8 @@
     - @requests.each do |req|
       .actions
         = link_to req.user.full_name, user_path(req.user)
-        = link_to "Confirm", confirm_friendship_path(req)
+        = link_to "Confirm", confirm_friendship_path(req), :class => 'btn success'
+        = link_to "Deny", cancel_friendship_path(req), :class => 'btn danger'
         
   - else
     %p You have no friendship requests

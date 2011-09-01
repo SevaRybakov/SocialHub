@@ -13,6 +13,7 @@ SocialHub::Application.routes.draw do
 
   match 'friendships/request/:friend_id' => 'friendships#send_request', :as => 'friendship_request'
   match 'friendships/confirm/:friendship_id' => 'friendships#confirm', :as => 'confirm_friendship'
+  match 'friendships/cancel/:friendship_id' => 'friendships#cancel', :as => 'cancel_friendship'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
