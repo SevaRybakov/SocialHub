@@ -5,6 +5,7 @@ class FriendshipsController < ApplicationController
 
   def index
     @established = @user.friendships
+    @online = @user.friendships
     @requests = @user.friendship_requests
     @wanted = @user.wanted_friendships
   end
@@ -20,6 +21,19 @@ class FriendshipsController < ApplicationController
     end
     redirect_to user_path @friend
   end
+  
+  def confirm
+    @friendship ||= Friendship.find params[:friendship_id]
+    @friendship.is_confirmed = true
+    if @friendship.save
+      flash[:success] = "Friendship established!"
+    else
+      flash[:error] = "Error occured while establishing friendship"
+    end
+    redirect_to user_path current_user
+  end
+  
+  private ####################################################
   
   def get_friend
     @friend ||= User.find params[:friend_id]
