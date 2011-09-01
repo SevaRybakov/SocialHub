@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
            :conditions => { :is_confirmed => true }
   has_many :friends, :through => :friendships
 
-
   # 2) wanted friends
   # (the people our user has sent friendship request to);
   has_many :wanted_friendships, :class_name => "Friendship",
