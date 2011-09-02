@@ -1,13 +1,15 @@
 %div.post{:posttime => post.created_at.to_i }
-  %h3
-    = link_to post.user_from.name + " " + post.user_from.surname, user_path( post.user_from )
-    %small= post.content
+  .ava
+    %img{:src => '/images/kitty-small.png'}
+  
+  .body
+    = link_to post.user_from.name + " " + post.user_from.surname, user_path( post.user_from ), :class => 'user'
+    %small= get_date_in_text(post.created_at).to_s
+    .content= post.content
+  
   %div{:align => "right"}
-    %small= get_date_in_text(post.created_at).to_s + " - "
     = link_to "Show", user_post_path( post.user_to, post)
     - if can? :update, post
       = link_to "Edit", edit_user_post_path( post.user_to, post )
     - if can? :destroy, post
       = link_to "Destroy", user_post_path( post.user_to, post ), :method => :delete, :confirm => "Sure?"
-  %hr/
-

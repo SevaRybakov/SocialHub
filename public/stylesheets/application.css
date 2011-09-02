@@ -775,7 +775,7 @@ select,
   padding: 4px;
   font-size: 13px;
   line-height: 18px;
-  height: 28px;
+  height: 18px;
   color: #808080;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
@@ -1991,3 +1991,16 @@ a.user {
     color: #444444;
     text-decoration: underline; }
 
+.post {
+  clear: both;
+  margin-top: 10px;
+  padding-bottom: 5px;
+  border-bottom: #cccccc 1px solid; }
+  .post .ava {
+    width: 64px;
+    height: 64px;
+    float: left; }
+  .post .body {
+    margin-left: 64px; }
+    .post .body small {
+      color: #999999; }
