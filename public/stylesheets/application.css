@@ -1991,16 +1991,20 @@ a.user {
     color: #444444;
     text-decoration: underline; }
 
-.post {
+.post, .friend {
   clear: both;
   margin-top: 10px;
   padding-bottom: 5px;
   border-bottom: #cccccc 1px solid; }
-  .post .ava {
+  .post .ava, .friend .ava {
     width: 64px;
     height: 64px;
     float: left; }
-  .post .body {
+  .post .body, .friend .body {
     margin-left: 64px; }
-    .post .body small {
+    .post .body small, .friend .body small {
       color: #999999; }
+
+/*Fixing input height. Forever */
+input[type="text"], input[type="password"] {
+  height: 28px; }
