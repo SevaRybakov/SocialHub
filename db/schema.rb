@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20110831162404) do
   create_table "posts", :force => true do |t|
     t.integer  "user_to_id"
     t.integer  "user_from_id"
-    t.string   "content"
+    t.string   "content",      :limit => 65535
     t.string   "post_type"
     t.string   "media_url"
     t.datetime "created_at"

@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.references :user_to
       t.references :user_from
-      t.string :content
+      t.string :content, :limit => 65535
       t.string :post_type
       t.string :media_url
 
