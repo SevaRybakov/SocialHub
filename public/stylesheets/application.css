@@ -775,7 +775,7 @@ select,
   padding: 4px;
   font-size: 13px;
   line-height: 18px;
-  height: 18px;
+  height: 28px;
   color: #808080;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
@@ -1990,3 +1990,4 @@ a.user {
   a.user:hover {
     color: #444444;
     text-decoration: underline; }
+

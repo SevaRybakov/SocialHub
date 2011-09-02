@@ -31,13 +31,5 @@ $(function(){
     setTimeout(updatePosts, 5000)
   }
 
-  function() {
-    $('#post_submit').attr('disabled','disabled');
-    $('#post_content').change(function() {
-      if($(this).val != '') {
-        $('#post_submit').removeAttr('disabled');
-      }
-  });
-
 });
 

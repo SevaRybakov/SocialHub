@@ -13,19 +13,20 @@ gem 'cancan'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'sass'
+gem 'paperclip'
 
 group :test do
   gem 'database_cleaner'
-  
+
   gem 'cucumber-rails'
   gem 'capybara'
   gem "capybara-webkit"
   gem 'launchy'
-  
+
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'factory_girl_rails'
-  
+
   gem 'autotest'
 end
 
@@ -34,3 +35,4 @@ group :development do
   gem 'guard'
   gem 'guard-livereload'
 end
+
