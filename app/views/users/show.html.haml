@@ -5,10 +5,14 @@
   - if (@user.online?)
     - subtitle "Online"
 
-
 - sidebar render('sidebar')
 
-%section
+
+%section#profile
+
+  - if @user.posts.current_status.last
+    %p#status= @user.posts.current_status.last.content
+
   %dl
     - if @user.date_of_birth
       %dt Date of birth:

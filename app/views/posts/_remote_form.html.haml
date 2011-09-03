@@ -1,6 +1,12 @@
 - form_for( [@user, Post.new], :remote => true ) do |form|
   .clearfix
-    %label Add your post here:
+    %label
+      %b Add your post here:
+      %br/
+      %br/
+      - if current_user == @user
+        %sup As status:
+        = form.check_box :is_status, :id => "status_checkbox"
     .input
       = form.text_area :content, :class => "xxlarge", :rows => 2
   .actions
