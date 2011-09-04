@@ -7,7 +7,7 @@
     %small= get_date_in_text(post.created_at).to_s
     - if post.content.length < 400
       - if post.is_status
-        %p#status{:style => "float: inherit;"}= post.content
+        #status{:style => "float: inherit;"}= post.content
       - else
         .content= post.content
     - else

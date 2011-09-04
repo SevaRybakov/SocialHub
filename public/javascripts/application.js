@@ -18,7 +18,7 @@ $(function(){
 		$(tabToShow).fadeIn(200);
 		return false;
 	});
-  
+
   //Posts.
   $(function() {
     if($('#posts').length > 0 ) {
@@ -31,7 +31,7 @@ $(function(){
     $.getScript(window.location.href + "/posts" + "?created_at=" + created_at + "&status=new")
     setTimeout(updatePosts, 5000)
   }
-  
+
   $('.hidden').hide();
   $('a.show-hidden').click( function(){
     var contentToShow = $(this).attr('href');
@@ -45,7 +45,7 @@ $(function(){
   $('#status_checkbox').change(checkPostContent);
 
   function checkPostContent() {
-    if ( $('#status_checkbox').attr('checked') && $('#post_content').val().length > 20 ) {
+    if ( $('#status_checkbox').attr('checked') && $('#post_content').val().length > 255 ) {
       $('#post_submit').addClass('disabled');
       $('#status_alert').remove();
       $('.clearfix').append("<p id=\"status_alert\" style=\"color: red; text-align: center;\">Status cannot be more than 256 symbols!</p>");
