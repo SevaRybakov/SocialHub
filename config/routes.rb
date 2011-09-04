@@ -5,12 +5,15 @@ SocialHub::Application.routes.draw do
   root :to => "application#home"
 
   resources :users do
-    resources :albums
-    resources :posts, :add => []
+    resources :albums, :only => [:index, :new, :create]
+    resources :posts
     match 'friends' => 'friendships#index'
     match 'update_posts' => 'posts#update_posts', :via => :get
   end
 
+  resources :albums, :only => [:show, :edit, :update, :destroy] do
+    resources :photos
+  end
   
 
   match 'friendships/request/:friend_id' => 'friendships#send_request', :as => 'friendship_request'

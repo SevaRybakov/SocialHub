@@ -8,13 +8,13 @@
   - @albums.each do |a|
     .album
       %h4
-        = link_to a.name, user_album_path( @user, a )
+        = link_to a.name, album_path( a )
       .placeholder
       %ul.actions
         %li
-          = link_to "Rename", edit_user_album_path( @user, a )
+          = link_to "Rename", edit_album_path( a )
         %li  
-          = link_to "Destroy", user_album_path( @user, a ), :method => :delete, :confirm => "Sure"
+          = link_to "Destroy", album_path( a ), :method => :delete, :confirm => "Sure"
   - if current_user == @user
     .album
       %h4
