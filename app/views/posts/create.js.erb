@@ -1,3 +1,8 @@
 $('#posts').prepend("<%= escape_javascript(render :partial => 'post', :object => @post) %>")
 $('#new_post')[0].reset()
 
+<%- if @post.is_status %>
+  $('#status').remove();
+  $('#profile').prepend("<%= escape_javascript(render :partial => 'status') %>");
+<%- end %>
+

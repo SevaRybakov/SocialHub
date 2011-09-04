@@ -31,5 +31,20 @@ $(function(){
     setTimeout(updatePosts, 5000)
   }
 
+
+  $('#post_content').keyup(checkPostContent);
+  $('#status_checkbox').change(checkPostContent);
+
+  function checkPostContent() {
+    if ( $('#status_checkbox').attr('checked') && $('#post_content').val().length > 20 ) {
+      $('#post_submit').addClass('disabled');
+      $('#status_alert').remove();
+      $('.clearfix').append("<p id=\"status_alert\" style=\"color: red; text-align: center;\">Status cannot be more than 256 symbols!</p>");
+    } else {
+        $('#status_alert').remove();
+        $('#post_submit').removeClass('disabled');
+    }
+  }
+
 });
 

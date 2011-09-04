@@ -2019,7 +2019,7 @@ input[type="text"], input[type="password"] {
 }
 
 #status {
-  text-align:right;
+  text-align:left;
   border-style: solid;
   border-color: #eee;
   border-width: 1px 0px 1px 1px;

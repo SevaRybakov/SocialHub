@@ -6,7 +6,11 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :user_to, :user_from, :content, :post_type
 
+  validates_length_of :content, :maximum => 65535
+  validates_length_of :content, :maximum => 20, :if => :is_status
+
   attr_accessible :user_to, :user_from, :content, :post_type, :created_at, :is_status
+
 end
 
 

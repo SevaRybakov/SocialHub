@@ -10,8 +10,7 @@
 
 %section#profile
 
-  - if @user.posts.current_status.last
-    %p#status= @user.posts.current_status.last.content
+  = render :partial => "/posts/status"
 
   %dl
     - if @user.date_of_birth
