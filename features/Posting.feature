@@ -21,6 +21,6 @@ Feature: Posting
     And I press "Create Post"
 
     When I am in Luke's browser
-    And I am waiting 5 seconds
+    And I wait for 5 seconds
     And I should see "Hello from Darth Vader!"
 

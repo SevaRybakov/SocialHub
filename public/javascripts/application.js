@@ -18,7 +18,8 @@ $(function(){
 		$(tabToShow).fadeIn(200);
 		return false;
 	});
-
+  
+  //Posts.
   $(function() {
     if($('#posts').length > 0 ) {
       setTimeout(updatePosts, 5000)
@@ -30,6 +31,14 @@ $(function(){
     $.getScript(window.location.href + "/posts" + "?created_at=" + created_at + "&status=new")
     setTimeout(updatePosts, 5000)
   }
+  
+  $('.hidden').hide();
+  $('a.show-hidden').click( function(){
+    var contentToShow = $(this).attr('href');
+    $(contentToShow).fadeIn(100);
+    $(this).hide();
+    return false;
+  });
 
 
   $('#post_content').keyup(checkPostContent);

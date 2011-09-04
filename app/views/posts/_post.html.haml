@@ -5,7 +5,16 @@
   .body
     = link_to post.user_from.name + " " + post.user_from.surname, user_path( post.user_from ), :class => 'user'
     %small= get_date_in_text(post.created_at).to_s
-    .content= post.content
+    - if post.content.length < 400
+      .content= post.content
+    - else
+      .content
+        = post.content[0..400]
+        %a.show-hidden{ :href => "#part#{post.id}"} Show more
+        %span.hidden{ :id => "part#{post.id}"} 
+          = post.content[401..post.content.length]
+        
+        
   
   %div{:align => "right"}
     = link_to "Show", user_post_path( post.user_to, post)

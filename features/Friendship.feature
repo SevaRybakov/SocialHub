@@ -14,6 +14,7 @@ Feature: Friendship
     And should not see "Add friend"
     
     When I am in Luke's browser
+    And I go to the home page
     Then I should see "+1"
     
   

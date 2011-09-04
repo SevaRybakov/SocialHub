@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: posts
@@ -21,10 +22,11 @@ end
 #  id           :integer         not null, primary key
 #  user_to_id   :integer
 #  user_from_id :integer
-#  content      :string(255)
+#  content      :string(65535)
 #  post_type    :string(255)
 #  media_url    :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime
+#  is_status    :boolean
 #
 
