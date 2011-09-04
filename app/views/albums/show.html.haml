@@ -1,2 +1,7 @@
-- @photos.each do |p|
-  = image_tag p.image.url
+- title "Browsing album #{@album.name}"
+
+.actions
+  = link_to "Upload new photo", new_user_album_photo_path( @user, @album ), :class => 'btn success'
+%section#photos
+  - @photos.each do |p|
+    = image_tag p.url(:small)

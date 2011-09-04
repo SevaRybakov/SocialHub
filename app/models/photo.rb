@@ -1,7 +1,15 @@
 class Photo < ActiveRecord::Base
   belongs_to :album
   
-  has_attached_file :image
+  has_attached_file :image, :styles => { :small => '200x200>', :album_pic => '200x200#'}
+  
+  validates_attachment_presence :image
+  validates_attachment_size :image, :less_than => 2.megabytes
+  validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png']
+  
+  def url(arg)
+    self.image.url(arg)
+  end
 end
 
 
