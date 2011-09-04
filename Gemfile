@@ -15,6 +15,11 @@ gem 'haml-rails'
 gem 'sass'
 gem 'paperclip'
 
+#delayed job
+gem 'clockwork'
+gem 'delayed_job'
+gem 'foreman'
+
 group :test do
   gem 'database_cleaner'
 

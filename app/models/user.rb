@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles
   has_many :posts, :foreign_key => "user_to_id"
-
+  has_many :friends_statistics
   # Friendship associations
 
   # 1) actual friends;

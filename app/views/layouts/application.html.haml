@@ -3,6 +3,7 @@
     %title= ( yield(:title).blank? ? "The Social Network" : yield(:title)) + " - SocialHub"
     = stylesheet_link_tag :all
     = javascript_include_tag :defaults
+    = javascript_include_tag 'dashboard/Charts/FusionCharts.js'
     = csrf_meta_tag
   %body
     .topbar
@@ -34,7 +35,7 @@
                 %p
                   = value
             = yield
-    
+
     = debug(params) if (Rails.env.development? || Rails.env.test?)
     = debug("current_user.id: #{current_user.id}") if (Rails.env.development? || Rails.env.test?) && current_user
 

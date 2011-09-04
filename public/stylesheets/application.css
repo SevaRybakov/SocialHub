@@ -2047,7 +2047,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   text-align: left; }
 
 #status {
-  float: right; }
+  float: right;
+  max-width: 400px; }
 
 .status {
   text-align: left;
@@ -2066,6 +2067,9 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 
 .content {
   word-wrap: break-word; }
+
+#dashboard {
+  padding: 5px; }
 
 #wrapper {
   margin-top: 60px; }

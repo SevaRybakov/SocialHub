@@ -48,6 +48,7 @@ GEM
       capybara (~> 1.0.0)
     childprocess (0.2.2)
       ffi (~> 1.0.6)
+    clockwork (0.2.4)
     cocaine (0.2.0)
     cucumber (1.0.2)
       builder (>= 2.1.2)
@@ -59,7 +60,11 @@ GEM
       capybara (>= 1.0.0)
       cucumber (~> 1.0.0)
       nokogiri (>= 1.4.6)
+    daemons (1.1.4)
     database_cleaner (0.6.7)
+    delayed_job (2.1.4)
+      activesupport (~> 3.0)
+      daemons
     devise (1.4.2)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
@@ -76,6 +81,9 @@ GEM
       factory_girl (~> 2.0.0)
       railties (>= 3.0.0)
     ffi (1.0.9)
+    foreman (0.20.0)
+      term-ansicolor (~> 1.0.5)
+      thor (>= 0.13.6)
     gherkin (2.4.16)
       json (>= 1.4.6)
     guard (0.6.2)
@@ -176,10 +184,13 @@ DEPENDENCIES
   cancan
   capybara
   capybara-webkit
+  clockwork
   cucumber-rails
   database_cleaner
+  delayed_job
   devise
   factory_girl_rails
+  foreman
   guard
   guard-livereload
   haml-rails

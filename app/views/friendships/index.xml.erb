@@ -1,0 +1,16 @@
+<graph numdivlines='4' lineThickness='3' showValues='0' numVDivLines='10' formatNumberScale='1' rotateNames='1' decimalPrecision='0' anchorRadius='2' anchorBgAlpha='0' numberPrefix='' divLineAlpha='30' showAlternateHGridColor='1' yAxisMinValue='800000' shadowAlpha='50' >
+
+  <categories >
+  <%- @statistics.each do |statistic| %>
+    <category Name='<%= Date::MONTHNAMES[statistic.created_at.month] %>' />
+  <%- end %>
+  </categories>
+
+  <dataset seriesName='Current Year' color='A66EDD' anchorBorderColor='A66EDD' anchorRadius='4'>
+  <%- @statistics.each do |statistic| %>
+    <set value='<%= statistic.count %>' />
+  <%- end %>
+  </dataset>
+
+</graph>
+

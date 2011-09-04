@@ -8,20 +8,25 @@ class FriendshipsController < ApplicationController
     @online = @user.friendships.select{|fr| fr.friend.online? }
     @requests = @user.friendship_requests
     @wanted = @user.wanted_friendships
+    @statistics = @user.friends_statistics.order("created_at DESC").limit(12).all
+    respond_to do |format|
+      format.html
+      format.xml
+    end
   end
 
   def send_request
     if current_user.can_send_friendship_request_to? @friend &&
-      Friendship.create( :user_id => current_user.id, 
+      Friendship.create( :user_id => current_user.id,
                          :friend_id => @friend.id)
-      
+
       flash[:success] = "#{@friend.name} will be notified about your friendship request"
     else
       flash[:error] = "Error occured while requesting friendship from #{@friend.name}"
     end
     redirect_to user_path @friend
   end
-  
+
   def confirm
     @friendship ||= Friendship.find params[:friendship_id]
     @friendship.is_confirmed = true
@@ -32,7 +37,7 @@ class FriendshipsController < ApplicationController
     end
     redirect_to user_friends_path current_user
   end
-  
+
   def cancel
     @friendship ||= Friendship.find params[:friendship_id]
     if @friendship.destroy
@@ -42,15 +47,16 @@ class FriendshipsController < ApplicationController
     end
     redirect_to user_path current_user
   end
-  
+
   private ####################################################
-  
+
   def get_friend
     @friend ||= User.find params[:friend_id]
   end
-  
+
   def get_user
     @user ||= User.find params[:user_id]
   end
-  
+
 end
+

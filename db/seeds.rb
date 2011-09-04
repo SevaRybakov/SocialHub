@@ -8,6 +8,8 @@
 puts "Deleting all..."
 User.delete_all
 Role.delete_all
+Post.delete_all
+FriendsStatistic.delete_all
 
 puts "Create roles..."
 Role.create!(:name => "user")
@@ -37,5 +39,13 @@ User.all.each do |user_to|
   User.all.each do |user_from|
     post = Post.create!( :user_to => user_to, :user_from => user_from, :content => "Hello to #{user_to.name} #{user_to.surname} from #{user_from.name} #{user_from.surname}!", :post_type => "post", :created_at => Time.now - rand(10000) )
   end
+end
+
+puts "Friends statistics..."
+User.all.each do |user|
+  12.times.each do |i|
+    user.friends_statistics.build :count => rand(User.all.size), :created_at => Time.now - i.month
+  end
+  user.save
 end
 
