@@ -1,24 +1,28 @@
 %div.post{:posttime => post.created_at.to_i }
   .ava
     %img{:src => '/images/kitty-small.png'}
-  
+
   .body
     = link_to post.user_from.name + " " + post.user_from.surname, user_path( post.user_from ), :class => 'user'
     %small= get_date_in_text(post.created_at).to_s
     - if post.content.length < 400
-      .content= post.content
+      - if post.is_status
+        %p#status{:style => "float: inherit;"}= post.content
+      - else
+        .content= post.content
     - else
       .content
         = post.content[0..400]
         %a.show-hidden{ :href => "#part#{post.id}"} Show more
-        %span.hidden{ :id => "part#{post.id}"} 
+        %span.hidden{ :id => "part#{post.id}"}
           = post.content[401..post.content.length]
-        
-        
-  
+
+
+
   %div{:align => "right"}
-    = link_to "Show", user_post_path( post.user_to, post)
+    //= link_to "Show", user_post_path( post.user_to, post)
     - if can? :update, post
       = link_to "Edit", edit_user_post_path( post.user_to, post )
     - if can? :destroy, post
       = link_to "Destroy", user_post_path( post.user_to, post ), :method => :delete, :confirm => "Sure?"
+
