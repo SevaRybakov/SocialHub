@@ -1,19 +1,22 @@
 SocialHub::Application.routes.draw do
+
   devise_for :users
 
 
   root :to => "application#home"
 
+  #resources :albums
+
   resources :users do
-    resources :albums, :only => [:index, :new, :create]
+    resources :albums
     resources :posts
     match 'friends' => 'friendships#index'
     match 'update_posts' => 'posts#update_posts', :via => :get
   end
+  
+  
 
-  resources :albums, :only => [:show, :edit, :update, :destroy] do
-    resources :photos
-  end
+
   
 
   match 'friendships/request/:friend_id' => 'friendships#send_request', :as => 'friendship_request'

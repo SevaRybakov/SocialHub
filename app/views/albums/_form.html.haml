@@ -1,6 +1,6 @@
-- form_for [@user, @album] do |f|
+= form_for [@user, @album] do |f|
   .clearfix
     = f.label :name
     .input
       = f.text_field :name, :class => 'xxlarge'
-  .actions= f.submit :class => 'btn large primary'
+    .actions= f.submit :class => 'btn large primary'

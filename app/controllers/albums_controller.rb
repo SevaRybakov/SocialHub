@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   
-  before_filter :find_and_check_user, :only => [:create, :index]
+  before_filter :find_and_check_user
   before_filter :get_album, :only => [:show, :edit, :update, :destroy]
   
   def index
@@ -8,6 +8,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
+    @photos = @album.photos
   end
 
   def new
@@ -31,19 +32,17 @@ class AlbumsController < ApplicationController
     if @album.save
       flash[:success] = "You've just successfully renamed an album"
     end
-    redirect_to user_albums_path @album.user
+    redirect_to user_albums_path @user
   end
 
   def destroy
-    @user = @album.user
     if @album.destroy
-      flash[:warning] = "You've successfully deleted album \"#{@album.name}\""
+      flash[:warning] = "You've successfully deleted album"
     end
     redirect_to user_albums_path @user
   end
 
   private #################################
-  
   def get_album
     @album ||= Album.find params[:id]
   end

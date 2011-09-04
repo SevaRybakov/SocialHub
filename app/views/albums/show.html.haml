@@ -1,2 +1,2 @@
-%h1 Albums#show
-%p Find me in app/views/albums/show.html.haml
+- @photos.each do |p|
+  = image_tag p.image.url
