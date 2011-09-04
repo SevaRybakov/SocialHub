@@ -1980,11 +1980,13 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 
 .album {
   padding: 5 10 15 10;
+  max-width: 200px;
   float: left;
   margin-bottom: 20px;
   margin-right: 13px;
   background: #efefef;
-  border: #e0e0e0 1px solid; }
+  border: #e0e0e0 1px solid;
+  overflow: hidden; }
   .album h4 a {
     color: black; }
   .album .actions {
@@ -2008,9 +2010,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
       border-left: 0px; }
   .album .placeholder {
     width: 200px;
-    height: 200px;
-    background: #444444; }
-  .album .big-plus {
+    height: 200px; }
+  .album .big-text {
     width: 200px;
     height: 210px;
     padding-top: 20px;
@@ -2018,10 +2019,11 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
     font-size: 240px;
     line-height: 140px;
     font-weight: bold;
-    font-family: Helvetica, Arial, sans-serif; }
-    .album .big-plus a {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #bbbbbb; }
+    .album .big-text a {
       color: #bbbbbb; }
-      .album .big-plus a:hover {
+      .album .big-text a:hover {
         text-decoration: none; }
 
 .sidebar_links {
@@ -2032,6 +2034,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 5px 0px 5px 0px;
   background-color: whiteSmoke;
   text-align: center; }
+
+#photos img {
+  margin-right: 10px;
+  margin-bottom: 15px; }
 
 #status_checkbox {
   height: 20px;
@@ -2080,10 +2086,12 @@ a.user {
     height: 64px;
     float: left; }
   .post .body, .friend .body {
-    margin-left: 64px; }
+    margin-left: 64px;
+    word-wrap: break-word; }
     .post .body small, .friend .body small {
       color: #999999; }
 
 /*Fixing input height. Forever */
 input[type="text"], input[type="password"] {
   height: 28px; }
+

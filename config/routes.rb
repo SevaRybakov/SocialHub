@@ -8,7 +8,11 @@ SocialHub::Application.routes.draw do
   #resources :albums
 
   resources :users do
-    resources :albums
+    
+    resources :albums do
+      resources :photos
+    end
+    
     resources :posts
     match 'friends' => 'friendships#index'
     match 'update_posts' => 'posts#update_posts', :via => :get

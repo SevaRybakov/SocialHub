@@ -5,7 +5,11 @@
     .album
       %h4
         = link_to a.name, user_album_path(@user, a )
-      .placeholder
+        .placeholder
+          - if a.photos.empty?
+            .big-text ?
+          -else  
+            = image_tag a.photos.first.url(:album_pic)
       %ul.actions
         %li
           = link_to "Rename", edit_user_album_path( @user, a )
@@ -15,4 +19,4 @@
     .album
       %h4
         = link_to "Add new album", new_user_album_path( @user )
-      .big-plus= link_to '+', new_user_album_path( @user ) 
+      .big-text= link_to '+', new_user_album_path( @user ) 

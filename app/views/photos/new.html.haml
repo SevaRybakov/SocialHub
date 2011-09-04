@@ -1,5 +1,5 @@
 - title "Uploading a photo to #{@album.name}"
-= form_for [@album, @photo], :html => { :multipart => true } do |f|
+= form_for [@user, @album, @photo], :html => { :multipart => true } do |f|
   .clearfix
   = f.label :name
   .input
