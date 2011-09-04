@@ -20,6 +20,9 @@ gem 'clockwork'
 gem 'delayed_job'
 gem 'foreman'
 
+#memcached
+gem 'dalli'
+
 group :test do
   gem 'database_cleaner'
 

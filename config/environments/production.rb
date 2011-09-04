@@ -1,4 +1,9 @@
 SocialHub::Application.configure do
+  config.cache_store = :dalli_store
+  config.cache_store = :dalli_store, 'localhost', 'localhost', { :namespace => "SocialHub", :expires_in => 1.day, :compress => true }
+  config.perform_caching = true
+  config.action_controller.perform_caching = true
+  config.cache_classes = true
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
@@ -47,3 +52,4 @@ SocialHub::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 end
+

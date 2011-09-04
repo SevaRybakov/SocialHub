@@ -59,14 +59,16 @@ class User < ActiveRecord::Base
   def get_older_posts created_at = nil
     created_at ||= Time.now
     # self.posts.where("created_at < ?", created_at).order("created_at DESC").limit(10).all
-    Post.where("created_at < ? AND ( user_to_id = ? OR ( user_from_id IN ( ? ) AND is_status IS TRUE ))", created_at, self.id, self.friend_ids ).order("created_at DESC").limit(10).all
+    Post.where("created_at < ? AND ( user_to_id = ? OR ( user_from_id IN ( ? ) AND is_status IS TRUE ))", created_at, self.id, self.friend_ids ).
+      order("created_at DESC").limit(10).includes([:user_to, :user_from]).all
   end
 
   def get_new_posts created_at = nil
     created_at ||= Time.now
 #    self.posts.where("created_at > ?", created_at).order("created_at DESC").all
      #Post.where(:is_status => true, :user_from_id => (self.friend_ids + [self.id])).where("created_at < ?", created_at).all
-     Post.where("created_at > ? AND ( user_to_id = ? OR ( user_from_id IN ( ? ) AND is_status IS TRUE ))", created_at, self.id, self.friend_ids ).order("created_at DESC").all
+     Post.where("created_at > ? AND ( user_to_id = ? OR ( user_from_id IN ( ? ) AND is_status IS TRUE ))", created_at, self.id, self.friend_ids ).
+      order("created_at DESC").includes([:user_to, :user_from]).all
   end
 
 

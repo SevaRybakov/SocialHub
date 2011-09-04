@@ -2,11 +2,11 @@
 
   <categories >
   <%- @statistics.each do |statistic| %>
-    <category Name='<%= Date::MONTHNAMES[statistic.created_at.month] %>' />
+    <category Name='<%= Date::MONTHNAMES[statistic.created_at.month] %>,<%= statistic.created_at.year %>' />
   <%- end %>
   </categories>
 
-  <dataset seriesName='Current Year' color='A66EDD' anchorBorderColor='A66EDD' anchorRadius='4'>
+  <dataset color='A66EDD' anchorBorderColor='A66EDD' anchorRadius='4'>
   <%- @statistics.each do |statistic| %>
     <set value='<%= statistic.count %>' />
   <%- end %>

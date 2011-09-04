@@ -8,7 +8,7 @@ class FriendshipsController < ApplicationController
     @online = @user.friendships.select{|fr| fr.friend.online? }
     @requests = @user.friendship_requests
     @wanted = @user.wanted_friendships
-    @statistics = @user.friends_statistics.order("created_at DESC").limit(12).all
+    @statistics = @user.friends_statistics.order("created_at").limit(12).all
     respond_to do |format|
       format.html
       format.xml

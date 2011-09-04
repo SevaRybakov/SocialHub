@@ -61,6 +61,7 @@ GEM
       cucumber (~> 1.0.0)
       nokogiri (>= 1.4.6)
     daemons (1.1.4)
+    dalli (1.1.1)
     database_cleaner (0.6.7)
     delayed_job (2.1.4)
       activesupport (~> 3.0)
@@ -186,6 +187,7 @@ DEPENDENCIES
   capybara-webkit
   clockwork
   cucumber-rails
+  dalli
   database_cleaner
   delayed_job
   devise

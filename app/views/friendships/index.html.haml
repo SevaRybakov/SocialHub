@@ -42,7 +42,7 @@
 
 #dashboard.tab-content
 :javascript
-  var dashboard = new FusionCharts("/javascripts/dashboard/Charts/FCF_MSLine.swf", "ChId1", "690", "400");
+  var dashboard = new FusionCharts("/javascripts/dashboard/Charts/FCF_MSLine.swf", "Statistics", "600", "300");
   dashboard.setDataURL("#{user_friends_path(@user)}.xml");
   dashboard.render("dashboard");
 
