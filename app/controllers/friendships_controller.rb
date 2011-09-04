@@ -30,7 +30,7 @@ class FriendshipsController < ApplicationController
     else
       flash[:error] = "Error occured while establishing friendship"
     end
-    redirect_to user_path current_user
+    redirect_to user_friends_path current_user
   end
   
   def cancel

@@ -27,7 +27,8 @@ class User < ActiveRecord::Base
   has_many :potential_friends, :through => :friendship_requests,
                              :source => :user
 
-
+  has_many :albums, :dependent => :destroy
+  
   validates_presence_of :name, :surname
 
 
@@ -46,16 +47,14 @@ class User < ActiveRecord::Base
   def full_name
     "#{self.name} #{self.surname}"
   end
+  
+  def friend_of?(user)
+     self.friends.include? user
+  end
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.downcase)
   end
-
-  def init_user
-    self.roles << Role.find_by_name("user")
-    self.last_activity_at = Time.now
-  end
-
 
   def get_older_posts created_at = nil
     created_at ||= Time.now
@@ -67,9 +66,6 @@ class User < ActiveRecord::Base
     self.posts.where("created_at > ?", created_at).order("created_at DESC").all
   end
 
-  def friend_of?(user)
-    self.friends.include? user
-  end
 
   def online?
     Time.now - self.last_activity_at < 3.minutes
@@ -80,6 +76,12 @@ class User < ActiveRecord::Base
     !self.friends.include?(another_user) &&
     !self.wanted_friends.include?(another_user) &&
     !self.potential_friends.include?(another_user)
+  end
+  
+  private ######################################
+  def init_user
+    self.roles << Role.find_by_name("user")
+    self.last_activity_at = Time.now
   end
 
 end

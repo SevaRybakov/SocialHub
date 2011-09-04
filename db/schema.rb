@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110902194145) do
+ActiveRecord::Schema.define(:version => 20110903175909) do
+
+  create_table "albums", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "albums", ["user_id"], :name => "index_albums_on_user_id"
 
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"

@@ -1978,6 +1978,52 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .popover .content p, .popover .content ul, .popover .content ol {
   margin-bottom: 0; }
 
+.album {
+  padding: 5 10 15 10;
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 13px;
+  background: #efefef;
+  border: #e0e0e0 1px solid; }
+  .album h4 a {
+    color: black; }
+  .album .actions {
+    background: #efefef;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    border: 0;
+    text-align: center; }
+    .album .actions li {
+      padding: 0px 3px 0px 8px;
+      border-left: #dddddd 1px solid;
+      list-style: none;
+      display: inline; }
+      .album .actions li a {
+        color: #aaaaaa; }
+        .album .actions li a:hover {
+          color: #666666; }
+    .album .actions li:first-child {
+      border-left: 0px; }
+  .album .placeholder {
+    width: 200px;
+    height: 200px;
+    background: #444444; }
+  .album .big-plus {
+    width: 200px;
+    height: 210px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 240px;
+    line-height: 140px;
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif; }
+    .album .big-plus a {
+      color: #bbbbbb; }
+      .album .big-plus a:hover {
+        text-decoration: none; }
+
 #wrapper {
   margin-top: 60px; }
 
@@ -2008,25 +2054,3 @@ a.user {
 /*Fixing input height. Forever */
 input[type="text"], input[type="password"] {
   height: 28px; }
-
-#status_checkbox {
-  height: 20px;
-  width: 20px;
-}
-
-#profile {
-  text-align: left;
-}
-
-#status {
-  text-align:right;
-  border-style: solid;
-  border-color: #eee;
-  border-width: 1px 0px 1px 1px;
-  float: right;
-  padding: 4px;
-  -webkit-border-radius: 5px 0px 0px 5px;
-  -moz-border-radius: 5px 0px 0px 5px;
-  border-radius: 5px 0px 0px 5px;
-}
-
