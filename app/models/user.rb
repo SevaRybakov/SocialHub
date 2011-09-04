@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
                              :source => :user
 
   has_many :albums, :dependent => :destroy
-  
+
   validates_presence_of :name, :surname
 
 
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   def full_name
     "#{self.name} #{self.surname}"
   end
-  
+
   def friend_of?(user)
      self.friends.include? user
   end
@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   def get_older_posts created_at = nil
     created_at ||= Time.now
     # self.posts.where("created_at < ?", created_at).order("created_at DESC").limit(10).all
-    Post.where("created_at < ? AND ( user_to_id = ? OR ( user_from_id IN ( ? ) AND is_status IS TRUE ))", created_at, self.id, self.friend_ids ).order("created_at DESC").all
+    Post.where("created_at < ? AND ( user_to_id = ? OR ( user_from_id IN ( ? ) AND is_status IS TRUE ))", created_at, self.id, self.friend_ids ).order("created_at DESC").limit(10).all
   end
 
   def get_new_posts created_at = nil
@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
     !self.wanted_friends.include?(another_user) &&
     !self.potential_friends.include?(another_user)
   end
-  
+
   private ######################################
   def init_user
     self.roles << Role.find_by_name("user")

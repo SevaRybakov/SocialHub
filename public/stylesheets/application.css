@@ -2024,6 +2024,15 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
       .album .big-plus a:hover {
         text-decoration: none; }
 
+.sidebar_links {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 5px 0px 5px 0px;
+  padding: 5px 0px 5px 0px;
+  background-color: whiteSmoke;
+  text-align: center; }
+
 #status_checkbox {
   height: 20px;
   width: 20px; }
