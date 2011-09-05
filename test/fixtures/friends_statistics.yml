@@ -7,3 +7,15 @@ one:
 two:
   user: 
   count: 1
+
+# == Schema Information
+#
+# Table name: friends_statistics
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  count      :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+

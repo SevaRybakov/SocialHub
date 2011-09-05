@@ -16,8 +16,7 @@
   - if @established.length != 0
     - @established.each do |fr|
       .friend
-        .ava
-          %img{:src => '/images/kitty-small.png'}
+        .ava= image_tag fr.friend.avatar.url(:wall)
       = link_to fr.friend.full_name, user_path(fr.friend), :class => 'user'
   - else
     %p You have no friends

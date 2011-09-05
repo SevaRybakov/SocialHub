@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many :posts, :foreign_key => "user_to_id"
   has_many :friends_statistics
+  
+  has_attached_file :avatar, :styles => { :profile => '220x400>', :wall => '50x50#' }
+  validates_attachment_size :avatar, :less_than => 2.megabytes
+  validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
+  
   # Friendship associations
 
   # 1) actual friends;
@@ -38,7 +43,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :surname, :date_of_birth, :school, :university
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :surname, :date_of_birth, :school, :university, :avatar, :avatar_file_name, :avatar_content_type, :avatar_file_size, :avatar_updated_at
 
 
 
@@ -93,6 +98,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: users
@@ -119,5 +125,9 @@ end
 #  created_at             :datetime
 #  updated_at             :datetime
 #  last_activity_at       :datetime
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 

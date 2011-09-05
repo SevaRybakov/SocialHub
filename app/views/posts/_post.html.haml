@@ -1,6 +1,5 @@
 %div.post{:posttime => post.created_at.to_i }
-  .ava
-    %img{:src => '/images/kitty-small.png'}
+  .ava= image_tag post.user_from.avatar.url(:wall)
 
   .body
     = link_to post.user_from.name + " " + post.user_from.surname, user_path( post.user_from ), :class => 'user'

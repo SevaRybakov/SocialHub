@@ -33,6 +33,7 @@ describe User do
 end
 
 
+
 # == Schema Information
 #
 # Table name: users
@@ -59,5 +60,9 @@ end
 #  created_at             :datetime
 #  updated_at             :datetime
 #  last_activity_at       :datetime
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
