@@ -1,2 +1,3 @@
 = title @photo.name
+= link_to "Delete", user_album_photo_path( @user, @album, @photo ), :method => :delete
 = image_tag @photo.url(:original)

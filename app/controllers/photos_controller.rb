@@ -4,7 +4,8 @@ class PhotosController < ApplicationController
   before_filter :get_photo, :only => [:show, :edit, :update, :destroy]
   
   def index
-    @photos = @album.photos
+    redirect_to user_album_path @user, @album
+    
   end
 
   def show
