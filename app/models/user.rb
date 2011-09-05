@@ -63,15 +63,12 @@ class User < ActiveRecord::Base
 
   def get_older_posts created_at = nil
     created_at ||= Time.now
-    # self.posts.where("created_at < ?", created_at).order("created_at DESC").limit(10).all
     Post.where("created_at < ? AND ( user_to_id = ? OR ( user_from_id IN ( ? ) AND is_status IS TRUE ))", created_at, self.id, self.friend_ids ).
       order("created_at DESC").limit(10).includes([:user_to, :user_from]).all
   end
 
   def get_new_posts created_at = nil
     created_at ||= Time.now
-#    self.posts.where("created_at > ?", created_at).order("created_at DESC").all
-     #Post.where(:is_status => true, :user_from_id => (self.friend_ids + [self.id])).where("created_at < ?", created_at).all
      Post.where("created_at > ? AND ( user_to_id = ? OR ( user_from_id IN ( ? ) AND is_status IS TRUE ))", created_at, self.id, self.friend_ids ).
       order("created_at DESC").includes([:user_to, :user_from]).all
   end
@@ -87,13 +84,45 @@ class User < ActiveRecord::Base
     !self.wanted_friends.include?(another_user) &&
     !self.potential_friends.include?(another_user)
   end
-
+  
+  #Searching the users
+  
+  def self.search(query)
+    result = []
+    
+    begin
+      conditions = <<-EOS
+        to_tsvector( 'english',
+          coalesce(name, '') || ' ' ||
+          coalesce(surname, '') || ' '  || 
+          coalesce(school, '') || ' ' ||
+          coalesce(university, '')
+        ) @@ to_tsquery('english', ?)
+      EOS
+      result = where(conditions, convert_to_tsquery(query))
+      
+      
+    
+    rescue ActiveRecord::StatementInvalid
+      
+    end
+    
+    result
+  end
+  
+  
+  
   private ######################################
+  
   def init_user
     self.roles << Role.find_by_name("user")
     self.last_activity_at = Time.now
   end
-
+  
+  def self.convert_to_tsquery(query)
+    query.gsub(/!/, '\!').gsub(/\|/, '\|').gsub(/&/, '\&').gsub(/(?:^|\s+)[nN][oO][tT]\s/, '!').gsub(/\s+[aA][nN][dD]\s/, '&').gsub(/\s+/, '|')
+  end
+  
 end
 
 
